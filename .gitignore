@@ -1,5 +1,25 @@
-*.iml
-target
-.idea
+# Build output
+target/
+project/target/
+project/project/
+
+# Spark / Hive local artifacts
 derby.log
-metastore_db
+metastore_db/
+spark-warehouse/
+
+# IDE files
+.idea/
+*.iml
+.bsp/
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
