@@ -5,7 +5,7 @@ lazy val commonSettings = Seq(
   version := "0.1.0-SNAPSHOT",
   scalaVersion := "2.11.12",
   resolvers ++= Seq(
-    "Artima Maven Repository" at "http://repo.artima.com/releases"
+    "Artima Maven Repository" at "https://repo.artima.com/releases"
   ),
   libraryDependencies ++= Seq(
     "org.apache.spark" %% "spark-core" % sparkVersion,
