@@ -2,8 +2,8 @@
 
 [![CI](https://github.com/cluttazi/spark-etl/actions/workflows/ci.yml/badge.svg)](https://github.com/cluttazi/spark-etl/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Scala](https://img.shields.io/badge/Scala-2.11-red.svg)](https://www.scala-lang.org/)
-[![Spark](https://img.shields.io/badge/Apache%20Spark-2.3-e25a1c.svg)](https://spark.apache.org/)
+[![Scala](https://img.shields.io/badge/Scala-2.13-red.svg)](https://www.scala-lang.org/)
+[![Spark](https://img.shields.io/badge/Apache%20Spark-4.1-e25a1c.svg)](https://spark.apache.org/)
 
 A lightweight, reusable ETL (Extract–Transform–Load) toolkit for Apache Spark, structured as an sbt multi-project build.
 
@@ -19,22 +19,30 @@ All operations return `scala.util.Try`, keeping failure handling explicit and co
 
 ## Tech Stack
 
-- Scala 2.11.12
-- Apache Spark 2.3.1 (Core, SQL, Hive)
-- sbt 1.x multi-project build
-- ScalaTest 3.0
+- Scala 2.13.18
+- Apache Spark 4.1.3 (Core, SQL, Hive)
+- sbt 1.11 multi-project build
+- ScalaTest 3.2
+- scalafmt (via sbt-scalafmt)
 
 ## Getting Started
 
 ### Prerequisites
 
-- JDK 8
+- JDK 17 or 21 (Spark 4 requires Java 17+)
 - [sbt](https://www.scala-sbt.org/) (any recent version; the correct sbt version is picked up from `project/build.properties`)
 
 ### Build & Test
 
 ```bash
 sbt test
+```
+
+Code style is enforced with [scalafmt](https://scalameta.org/scalafmt/):
+
+```bash
+sbt scalafmtAll scalafmtSbt   # format
+sbt scalafmtCheckAll          # verify
 ```
 
 The test suite spins up a local Spark session and creates its own fixture files, so no external infrastructure is required.
@@ -57,7 +65,7 @@ The test suite spins up a local Spark session and creates its own fixture files,
 
 ## Continuous Integration
 
-Every push and pull request runs `sbt test` on JDK 8 via [GitHub Actions](.github/workflows/ci.yml).
+Every push and pull request runs `sbt test` on JDK 21 via [GitHub Actions](.github/workflows/ci.yml).
 
 ## License
 

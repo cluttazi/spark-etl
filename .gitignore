@@ -23,3 +23,8 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Metals / Bloop
+.metals/
+.bloop/
+metals.sbt
