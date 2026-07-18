@@ -7,7 +7,10 @@ class SparkTestSession {
     SparkSession.builder
       .master("local")
       .appName("SparkTestSession")
-      .enableHiveSupport()
+      // The suite only reads/writes files; the native ORC implementation
+      // avoids spinning up the embedded Hive metastore (Derby), which is
+      // not writable on every CI runner.
+      .config("spark.sql.orc.impl", "native")
       .getOrCreate()
 }
 
