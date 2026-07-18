@@ -11,5 +11,4 @@ class ExtractorSpec extends AnyFlatSpec with Matchers {
     FilesCreatorHelper.getTestFiles.size shouldBe LoadType.values.size
   }
 
-
 }

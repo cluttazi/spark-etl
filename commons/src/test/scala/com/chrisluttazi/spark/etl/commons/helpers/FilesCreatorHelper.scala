@@ -7,8 +7,8 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 
 /**
-  * Creates files in order to execute the Suite
-  */
+ * Creates files in order to execute the Suite
+ */
 class FilesCreatorHelper {
   val TEST_FILES_PREFIX: String = "numbers"
   val spark: SparkSession = SparkTestSession.get
@@ -29,11 +29,9 @@ class FilesCreatorHelper {
     // `numbers` on the classpath is an empty marker file; the datasets are
     // written next to it as `numbers.<format>` directories (Spark output
     // is always a directory of part files), so list the parent.
-    new File(resPath).getParentFile.
-      listFiles.
-      filter(f => f.isDirectory && f.getName.startsWith(s"$TEST_FILES_PREFIX.")).
-      toList
-
+    new File(resPath).getParentFile.listFiles
+      .filter(f => f.isDirectory && f.getName.startsWith(s"$TEST_FILES_PREFIX."))
+      .toList
 
 }
 
