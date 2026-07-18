@@ -33,7 +33,7 @@ trait Transformer {
   @tailrec
   final def applyToDF[A](list: List[A], f: (A, DataFrame) => DataFrame, df: DataFrame): DataFrame =
     list match {
-      case nil => df
+      case Nil => df
       case head :: tail => applyToDF(tail, f, f(head, df))
     }
 }

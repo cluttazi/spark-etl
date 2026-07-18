@@ -17,12 +17,10 @@ trait Loader {
     */
   @tailrec
   final def loadList(list: List[(LoadType, String, DataFrame)]): Try[Unit] = list match {
-    case nil => Try(1 == 1) //done
+    case Nil => Try(()) //done
     case head :: tail =>
-      if (load(head._1, head._2, head._3).isFailure)
-        1 == 1 //take action if failure
+      load(head._1, head._2, head._3) //failures are ignored; keep loading the rest
       loadList(tail)
-
   }
 
   /**
