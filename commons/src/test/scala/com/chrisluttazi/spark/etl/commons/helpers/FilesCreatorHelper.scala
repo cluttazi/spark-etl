@@ -26,9 +26,12 @@ class FilesCreatorHelper {
   }
 
   def getTestFiles: List[File] =
-    new File(resPath). //should not retrieve numbers...
+    // `numbers` on the classpath is an empty marker file; the datasets are
+    // written next to it as `numbers.<format>` directories (Spark output
+    // is always a directory of part files), so list the parent.
+    new File(resPath).getParentFile.
       listFiles.
-      filter(f => f.isFile && f.getName.contains(TEST_FILES_PREFIX)).
+      filter(f => f.isDirectory && f.getName.startsWith(s"$TEST_FILES_PREFIX.")).
       toList
 
 
